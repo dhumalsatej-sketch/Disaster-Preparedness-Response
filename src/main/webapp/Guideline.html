@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Guidelines - Disaster Preparedness System</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f7f9;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+
+        header {
+            background-color: #0073e6;
+            color: white;
+            text-align: center;
+            padding: 20px 10px;
+            font-size: 36px;
+            font-weight: bold;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1000px;
+            margin: 30px auto;
+        }
+
+        .accordion {
+            background-color: white;
+            color: #0073e6;
+            cursor: pointer;
+            padding: 18px;
+            width: 100%;
+            border: none;
+            text-align: left;
+            outline: none;
+            font-size: 20px;
+            transition: background-color 0.3s, color 0.3s;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .accordion:hover {
+            background-color: #0073e6;
+            color: white;
+        }
+
+        .accordion img {
+            width: 40px;
+            height: 40px;
+        }
+
+        .panel {
+            padding: 0 20px 20px 20px;
+            display: none;
+            background-color: white;
+            border-radius: 0 0 8px 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            margin-bottom: 15px;
+        }
+
+        .panel p {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+
+        footer {
+            background-color: #0073e6;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+        }
+
+        /* Smooth transition for panel */
+        .panel.show {
+            display: block;
+            animation: fadeIn 0.5s;
+        }
+
+        @keyframes fadeIn {
+            from {opacity: 0;}
+            to {opacity: 1;}
+        }
+    </style>
+</head>
+<body>
+	<div style="background:#003A75; padding:20px; color:white;">
+        <h1 style="margin:0; font-size:32px;">
+            &#128276 Disaster Preparedness & Response
+        </h1>
+
+        <div style="margin-top:10px;">
+            <a href="Student_HomePage.html" style="color:white; margin-right:20px; text-decoration:none; font-size:18px;">Home</a>
+            <a href="Guideline.html" style="color:white; margin-right:20px; text-decoration:none; font-size:18px;">Guidelines</a>
+            <a href="Training_page.html" style="color:white; margin-right:20px; text-decoration:none; font-size:18px;">Training</a>
+            <a href="Contact.html" style="color:white; margin-right:20px; text-decoration:none; font-size:18px;">Contact</a>
+            <a href="About.html" style="color:white; margin-right:20px; text-decoration:none; font-size:18px;">About</a>       </div>
+    </div>
+
+<header>Disaster Guidelines</header>
+
+<div class="container">
+    <!-- Earthquake -->
+    <button class="accordion">
+        
+        &#127759Earthquake Guidelines
+    </button>
+    <div class="panel">
+        <p><strong>Before:</strong> Identify safe spots, keep emergency kit ready, participate in drills.</p>
+        <p><strong>During:</strong> Drop, Cover, and Hold On. Stay away from windows, heavy objects, and glass.</p>
+        <p><strong>After:</strong> Evacuate calmly to assembly point, check for injuries, help others if safe.</p>
+    </div>
+
+    <!-- Flood -->
+    <button class="accordion">
+        
+        &#127754Flood Guidelines
+    </button>
+    <div class="panel">
+        <p><strong>Before:</strong> Keep emergency kit ready, know higher ground and evacuation routes.</p>
+        <p><strong>During:</strong> Move to higher ground, avoid walking/driving through floodwater, follow alerts.</p>
+        <p><strong>After:</strong> Return only when safe, report hazards, assist in recovery if possible.</p>
+    </div>
+
+    <!-- Fire -->
+    <button class="accordion">
+        
+        &#128293Fire Safety Guidelines
+    </button>
+    <div class="panel">
+        <p><strong>Before:</strong> Know fire exits, extinguishers, and emergency assembly points.</p>
+        <p><strong>During:</strong> Stop, Drop, and Roll if clothes catch fire, evacuate calmly using stairs.</p>
+        <p><strong>After:</strong> Report incidents, check for injuries, avoid re-entering unsafe areas.</p>
+    </div>
+
+    <!-- Cyclone / Storm -->
+    <button class="accordion">
+        
+        &#127786Cyclone / Storm Guidelines
+    </button>
+    <div class="panel">
+        <p><strong>Before:</strong> Secure windows and doors, have emergency kit ready, stay informed.</p>
+        <p><strong>During:</strong> Stay indoors away from windows, follow evacuation instructions if needed.</p>
+        <p><strong>After:</strong> Check surroundings, avoid downed wires and flooded areas, follow official instructions.</p>
+    </div>
+
+    <!-- Pandemic / Health Emergency -->
+    <button class="accordion">
+       &#127973Pandamic / Health Emergency Guidelines
+    </button>
+    <div class="panel">
+        <p><strong>Before:</strong> Maintain hygiene, know isolation areas, keep masks and sanitizers ready.</p>
+        <p><strong>During:</strong> Follow distancing rules, wear masks, report symptoms to authorities.</p>
+        <p><strong>After:</strong> Continue hygiene practices, follow recovery protocols, stay informed.</p>
+    </div>
+</div>
+
+<footer>
+    &copy; 2025 Disaster Preparedness Education System. All Rights Reserved.
+</footer>
+
+<script>
+    // Accordion functionality
+    const accordions = document.querySelectorAll('.accordion');
+
+    accordions.forEach(acc => {
+        acc.addEventListener('click', () => {
+            const panel = acc.nextElementSibling;
+            panel.classList.toggle('show');
+        });
+    });
+</script>
+
+</body>
+</html>

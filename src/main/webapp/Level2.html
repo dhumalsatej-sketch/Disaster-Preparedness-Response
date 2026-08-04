@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Level 2: Fire Escape</title>
+    <style>
+        /* CSS STYLES - Consistent with Level 1 */
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #fff5f5; /* Light red tint */
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .navbar {
+            width: 100%;
+            background-color: #ff4757; /* Red for Fire Level */
+            padding: 15px;
+            color: white;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+        .navbar h2 { margin: 0; }
+
+        .game-container {
+            background: white;
+            width: 90%;
+            max-width: 800px;
+            margin-top: 30px;
+            border-radius: 20px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            border: 5px solid #ff6b6b;
+        }
+
+        .progress-bar {
+            width: 100%;
+            background-color: #e0e0e0;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            height: 15px;
+        }
+        .progress-fill {
+            height: 100%;
+            width: 5%;
+            background-color: #ff4757;
+            border-radius: 10px;
+            transition: width 0.5s;
+        }
+
+        /* Scenario Visuals */
+        .scene-display {
+            height: 250px;
+            background-color: #333; /* Dark background for smoke */
+            color: white;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            border: 2px dashed #ff4757;
+            font-size: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Fire Alarm Animation */
+        .alarm-pulse {
+            animation: pulse-red 1s infinite;
+        }
+        
+        @keyframes pulse-red {
+            0% { box-shadow: 0 0 0 0 rgba(255, 71, 87, 0.7); border-color: red; }
+            70% { box-shadow: 0 0 0 20px rgba(255, 71, 87, 0); border-color: orange; }
+            100% { box-shadow: 0 0 0 0 rgba(255, 71, 87, 0); border-color: red; }
+        }
+
+        /* Buttons */
+        .options-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 15px;
+        }
+
+        .action-btn {
+            background-color: #ff4757;
+            color: white;
+            border: none;
+            padding: 20px;
+            border-radius: 12px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .action-btn:hover { background-color: #c0392b; transform: scale(1.05); }
+
+        .feedback-msg {
+            margin-top: 20px;
+            font-weight: bold;
+            font-size: 18px;
+            height: 30px;
+            color: #333;
+        }
+
+        /* Success Screen */
+        .success-screen {
+            display: none;
+            text-align: center;
+        }
+        .success-screen h1 { color: #2ecc71; }
+         footer {
+            background-color: #0073e6;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="navbar">
+        <h2>🔥 Mission Control: Level 2</h2>
+    </div>
+
+    <div class="game-container" id="gameBox">
+        
+        <h3>Current Status: <span id="statusText" style="color:red">ALARM RINGING!</span></h3>
+        
+        <div class="progress-bar">
+            <div class="progress-fill" id="progressBar"></div>
+        </div>
+
+        <div class="scene-display alarm-pulse" id="sceneImage">
+            [ Flashing lights and classmates looking confused ] <br>
+            The Fire Alarm is ringing loud!
+        </div>
+
+        <div class="feedback-msg" id="feedback">What is your first move?</div>
+
+        <div class="options-grid" id="buttonArea">
+            <button class="action-btn" onclick="checkAnswer('hide')">🙈 Hide under Desk</button>
+            <button class="action-btn" onclick="checkAnswer('door')">🚪 Check Door for Heat</button>
+            <button class="action-btn" onclick="checkAnswer('bag')">🎒 Pack my Bag</button>
+        </div>
+    </div>
+
+    <div class="game-container success-screen" id="successBox">
+        <h1>🎉 YOU ESCAPED!</h1>
+        <p>You made it to the Assembly Point safely.</p>
+        <h2>+100 Points Earned</h2>
+        <button type="button" onclick="window.location.href='Training_page.html'"action-btn" class="action-btn" style="background-color: #2ecc71;">Congratulations🏅</button>
+    </div>
+
+    <script>
+        let stage = 1; 
+
+        function checkAnswer(action) {
+            const feedback = document.getElementById("feedback");
+            const scene = document.getElementById("sceneImage");
+            const buttons = document.getElementById("buttonArea");
+            const progress = document.getElementById("progressBar");
+
+            // STAGE 1: The Alarm
+            if (stage === 1) {
+                if (action === 'door') {
+                    feedback.style.color = "green";
+                    feedback.innerText = "Correct! Touch the door with back of hand.";
+                    progress.style.width = "40%";
+                    
+                    // Move to Stage 2
+                    setTimeout(() => {
+                        stage = 2;
+                        scene.innerText = "[ The hallway is full of grey smoke! ]";
+                        feedback.innerText = "You opened the door, but it's smoky!";
+                        // Change Buttons
+                        buttons.innerHTML = `
+                            <button class="action-btn" onclick="checkAnswer('run')">🏃 Run Fast!</button>
+                            <button class="action-btn" onclick="checkAnswer('crawl')">🐛 Crawl Low</button>
+                            <button class="action-btn" onclick="checkAnswer('water')">💧 Drink Water</button>
+                        `;
+                    }, 1500);
+                } else if (action === 'bag') {
+                    feedback.style.color = "red";
+                    feedback.innerText = "Leave your stuff! Lives are more important!";
+                } else {
+                    feedback.style.color = "red";
+                    feedback.innerText = "Don't hide! You will get trapped.";
+                }
+            } 
+            // STAGE 2: The Smoke
+            else if (stage === 2) {
+                if (action === 'crawl') {
+                    feedback.style.color = "green";
+                    feedback.innerText = "Smart! Smoke rises, so the air is cleaner down low.";
+                    progress.style.width = "75%";
+
+                    // Move to Stage 3
+                    setTimeout(() => {
+                        stage = 3;
+                        scene.innerText = "[ IMAGE: You are outside the school building. ]";
+                        scene.classList.remove("alarm-pulse"); // Stop the flashing
+                        scene.style.backgroundColor = "#87CEEB"; // Sky blue background
+                        scene.style.color = "black";
+                        
+                        feedback.innerText = "You are out! Where do you go?";
+                        
+                        buttons.innerHTML = `
+                            <button class="action-btn" onclick="checkAnswer('home')">🏠 Go Home</button>
+                            <button class="action-btn" onclick="checkAnswer('assembly')">📍 Assembly Point</button>
+                            <button class="action-btn" onclick="checkAnswer('back')">🔙 Go Back Inside</button>
+                        `;
+                    }, 1500);
+                } else {
+                    feedback.style.color = "red";
+                    feedback.innerText = "Smoke is poisonous! If you stand up, you choke!";
+                }
+            }
+            // STAGE 3: Assembly
+            else if (stage === 3) {
+                if (action === 'assembly') {
+                    progress.style.width = "100%";
+                    feedback.innerText = "Correct! Teachers need to count heads.";
+                    
+                    setTimeout(() => {
+                        document.getElementById("gameBox").style.display = "none";
+                        document.getElementById("successBox").style.display = "block";
+                    }, 1000);
+                } else {
+                    feedback.style.color = "red";
+                    feedback.innerText = "No! Teachers won't know you are safe if you leave!";
+                }
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Sign Up</title>
+    <style>
+        body {
+            font-family: Arial;
+            background: #e9eef7;
+        }
+        .signup-box {
+            width: 400px;
+            margin: 40px auto;
+            background: #fff;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px #ccc;
+        }
+        input, select {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background: #0073e6;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #005bb5;
+        }
+        h2 {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+	<div style="background:#003A75; padding:20px; color:white;">
+        <h1 style="margin:0; font-size:32px;">
+            &#128276 Disaster Preparedness & Response
+        </h1>
+	</div>
+
+<div class="signup-box">
+    <h2>Student Sign Up</h2>
+
+    <form>
+        <label>Full Name</label>
+        <input type="text" required>
+
+        <label>Student ID </label>
+        <input type="text" required>
+
+        <label>Class / Year</label>
+        <select required>
+            <option value="">Select Class/Year</option>
+            <option>5th</option>
+            <option>6th</option>
+            <option>7th</option>
+            <option>8th</option>
+            <option>9th</option>
+            <option>10th</option>
+            <option>11th</option>
+            <option>12th</option>
+            <option>FY</option>
+            <option>SY</option>
+            <option>TY</option>
+        </select>
+
+        <label>Division</label>
+        <select required>
+            <option value="">Select Division</option>
+            <option>A</option>
+            <option>B</option>
+            <option>C</option>
+        </select>
+
+        <label>Email </label>
+        <input type="email" placeholder="Optional for small students">
+
+        <label>Password</label>
+        <input type="password" required>
+
+        <label>Confirm Password</label>
+        <input type="password" required>
+        
+        <button type="button" onclick="window.location.href='login.html'">
+            Go to Login
+        </button>
+
+        
+    </form>
+    
+</div>
+
+</body>
+</html>

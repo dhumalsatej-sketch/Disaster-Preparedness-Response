@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>First Aid - Auto Medicine Suggestion</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #eaf7ff;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 50%;
+            margin: auto;
+            background: white;
+            margin-top: 60px;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+        }
+
+        h2 {
+            text-align: center;
+            color: #3b7ddd;
+        }
+
+        label {
+            font-weight: bold;
+            display: block;
+            margin-top: 15px;
+        }
+
+        select, textarea {
+            width: 100%;
+            padding: 12px;
+            margin-top: 5px;
+            border-radius: 8px;
+            border: 1px solid #aaa;
+            font-size: 15px;
+        }
+
+        textarea {
+            background: #f5faff;
+        }
+
+        button {
+            margin-top: 25px;
+            width: 100%;
+            padding: 12px;
+            border: none;
+            background: #3b7ddd;
+            color: white;
+            font-size: 18px;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        .msg {
+            display: none;
+            background: #d4f8ce;
+            color: green;
+            text-align: center;
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 20px;
+            font-weight: bold;
+        }
+         footer {
+            background-color: #0073e6;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>🩹 First Aid Helper</h2>
+
+        <label>Type of Injury</label>
+        <select id="injury" onchange="suggestMedicine()" required>
+            <option value="">-- Select Injury --</option>
+            <option value="cut">Cut / Scratch</option>
+            <option value="burn">Burn</option>
+            <option value="nosebleed">Nosebleed</option>
+            <option value="sprain">Sprain</option>
+            <option value="bite">Insect Bite</option>
+        </select>
+
+        <label>Medicines / Treatment</label>
+        <textarea id="medicineBox" rows="5" readonly placeholder="Medicines will appear here..."></textarea>
+
+
+        <div class="msg" id="saved">✔ Data Saved Successfully!</div>
+    </div>
+
+
+    <script>
+        function suggestMedicine() {
+
+            const injury = document.getElementById("injury").value;
+            const box = document.getElementById("medicineBox");
+
+            let data = {
+                "cut": 
+`• Wash wound with clean water  
+• Apply Dettol/Savlon  
+• Use Antiseptic Cream: *Betadine / Neosporin*  
+• Put a Bandage`,
+                
+                "burn": 
+`• Wash burn with cool water  
+• Apply *Silverex Cream / Burnol*  
+• Do NOT use ice  
+• Keep area dry`,
+
+                "nosebleed": 
+`• Sit forward (not backward)  
+• Pinch nose for 10 minutes  
+• Put ice pack on nose  
+• No medicine required immediately`,
+
+                "sprain": 
+`• R.I.C.E Treatment  
+  - Rest  
+  - Ice  
+  - Compression  
+  - Elevation  
+• Pain Relief: *Volini Gel / Moov*`,
+
+                "bite": 
+`• Wash area  
+• Apply *Hydrocortisone Cream / Ring Guard*  
+• Take anti-allergic tablet: *Cetrizine* if needed  
+• Avoid scratching`
+            };
+
+            box.value = data[injury] || "";
+        }
+
+        function save() {
+            document.getElementById("saved").style.display = "block";
+        }
+    </script>
+
+</body>
+</html>

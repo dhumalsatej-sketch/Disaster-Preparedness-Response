@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>First Aid - Auto Medicine Suggestion</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #eaf7ff;
+            margin: 0;
+            padding: 0;
+        }
+         header {
+            background: #0073e6;
+            color: white;
+            padding: 20px 10px;
+            text-align: center;
+            font-size: 36px;
+            font-weight: bold;
+        }
+
+        .container {
+            width: 50%;
+            margin: auto;
+            background: white;
+            margin-top: 60px;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+        }
+
+        h2 {
+            text-align: center;
+            color: #3b7ddd;
+        }
+
+        label {
+            font-weight: bold;
+            display: block;
+            margin-top: 15px;
+        }
+
+        select, textarea {
+            width: 100%;
+            padding: 12px;
+            margin-top: 5px;
+            border-radius: 8px;
+            border: 1px solid #aaa;
+            font-size: 15px;
+        }
+
+        textarea {
+            background: #f5faff;
+        }
+
+        button {
+            margin-top: 25px;
+            width: 100%;
+            padding: 12px;
+            border: none;
+            background: #3b7ddd;
+            color: white;
+            font-size: 18px;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        .msg {
+            display: none;
+            background: #d4f8ce;
+            color: green;
+            text-align: center;
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 20px;
+            font-weight: bold;
+        }
+        footer {
+            background-color: #0073e6;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+        }
+    </style>
+</head>
+<body>
+      <div style="background:#003A75; padding:20px; color:white;">
+        <h1 style="margin:0; font-size:32px;">
+            &#128276 Disaster Preparedness & Response
+        </h1>
+
+        <div style="margin-top:10px;">
+            <a href="Student_HomePage.html" style="color:white; margin-right:20px; text-decoration:none; font-size:18px;">Home</a>
+            <a href="Guideline.html" style="color:white; margin-right:20px; text-decoration:none; font-size:18px;">Guidelines</a>
+            <a href="Training_page.html" style="color:white; margin-right:20px; text-decoration:none; font-size:18px;">Training</a>
+            <a href="Contact.html" style="color:white; margin-right:20px; text-decoration:none; font-size:18px;">Contact</a>
+            <a href="About.html" style="color:white; margin-right:20px; text-decoration:none; font-size:18px;">About</a>
+        </div>
+    </div>
+    <header>Well Train</header>
+    <!-- Missions Heading -->
+    <h2 style="text-align:center; margin-top:30px;">
+        ⭐ Your Missions for Today ⭐
+    </h2>
+
+    <!-- Mission Cards Container -->
+    <div style="display:flex; justify-content:center; gap:30px; flex-wrap:wrap; padding:20px;">
+
+        <!-- Card 1 -->
+        <div style="background:white; width:300px; border-radius:12px; padding:20px; text-align:center; border:4px solid gold; box-shadow:0 4px 10px rgba(0,0,0,0.1);">
+            <div style="font-size:45px;">🌍</div>
+            <h3>Level 1:Shake-Out Challenge</h3>
+            <p>Play a mini-game to learn <b>Drop, Cover, and Hold On</b>.</p>
+            <button type="button" onclick="window.location.href='Level1.html'"padding:10px 20px; background:#ff6b6b; color:white; border:none; border-radius:6px; cursor:pointer;">
+                Play Game!
+            </button>
+        </div>
+
+        <!-- Card 2 -->
+        <div style="background:white; width:300px; border-radius:12px; padding:20px; text-align:center; border:4px solid gold; box-shadow:0 4px 10px rgba(0,0,0,0.1);">
+            <div style="font-size:45px;">🔥</div>
+            <h3>Level 2: Fire & Smoke Escape</h3>
+            <p>Learn emergency exit routes! Take a <b>quiz</b> to earn your badge.</p>
+            <button type="button" onclick="window.location.href='Level2.html'"padding:10px 20px; background:#ff6b6b; color:white; border:none; border-radius:6px; cursor:pointer;">
+                Take Quiz!
+            </button>
+        </div>
+
+        <!-- Card 3 -->
+        <div style="background:white; width:300px; border-radius:12px; padding:20px; text-align:center; border:4px solid gold; box-shadow:0 4px 10px rgba(0,0,0,0.1);">
+            <div style="font-size:45px;">🩹</div>
+            <h3>Level 3: Treating Small Hurts</h3>
+            <p>Learn about the First Aid Kit and how to apply a bandage.</p>
+            <button type="button" onclick="window.location.href='Level3.html'"; "padding:10px 20px; background:#ff6b6b; color:white; border:none; border-radius:6px; cursor:pointer;">
+                Start Activity!
+            </button>
+        </div>
+
+        <!-- Card 4 -->
+        <div style="background:white; width:300px; border-radius:12px; padding:20px; text-align:center; border:4px solid gold; box-shadow:0 4px 10px rgba(0,0,0,0.1);">
+            <div style="font-size:45px;">📞</div>
+            <h3>Level 4: Emergency Contacts</h3>
+            <p>Learn about the First Aid Kit and how to apply a bandage.</p>
+            <button type="button" onclick="window.location.href='Level4.html'"; "padding:10px 20px; background:#ff6b6b; color:white; border:none; border-radius:6px; cursor:pointer;">
+                Start Activity!
+            </button>
+        </div>
+       
+    </div>
+
+    <!-- Footer -->
+
+    <script>
+        function suggestMedicine() {
+
+            const injury = document.getElementById("injury").value;
+            const box = document.getElementById("medicineBox");
+
+            let data = {
+                "cut": 
+`• Wash wound with clean water  
+• Apply Dettol/Savlon  
+• Use Antiseptic Cream: *Betadine / Neosporin*  
+• Put a Bandage`,
+                
+                "burn": 
+`• Wash burn with cool water  
+• Apply *Silverex Cream / Burnol*  
+• Do NOT use ice  
+• Keep area dry`,
+
+                "nosebleed": 
+`• Sit forward (not backward)  
+• Pinch nose for 10 minutes  
+• Put ice pack on nose  
+• No medicine required immediately`,
+
+                "sprain": 
+`• R.I.C.E Treatment  
+  - Rest  
+  - Ice  
+  - Compression  
+  - Elevation  
+• Pain Relief: *Volini Gel / Moov*`,
+
+                "bite": 
+`• Wash area  
+• Apply *Hydrocortisone Cream / Ring Guard*  
+• Take anti-allergic tablet: *Cetrizine* if needed  
+• Avoid scratching`
+            };
+
+            box.value = data[injury] || "";
+        }
+
+        function save() {
+            document.getElementById("saved").style.display = "block";
+        }
+    </script>
+<footer>
+    &copy; 2025 Disaster Preparedness Education System. All Rights Reserved.
+</footer>
+</body>
+</html>

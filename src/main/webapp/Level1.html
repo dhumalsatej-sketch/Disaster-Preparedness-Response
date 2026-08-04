@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Level 1: The Shake-Out Challenge</title>
+    <style>
+        /* CSS STYLES */
+        body {
+            font-family: 'Poppins', sans-serif; /* Same font as your home */
+            background-color: #f0f8ff;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* Navbar (kept simple for demo) */
+        .navbar {
+            width: 100%;
+            background-color: #fff;
+            padding: 15px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        .navbar h2 { margin: 0; color: #3b82f6; }
+
+        /* Game Container */
+        .game-container {
+            background: white;
+            width: 90%;
+            max-width: 800px;
+            margin-top: 30px;
+            border-radius: 20px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            border: 5px solid #FFD700; /* Gold border for "Level" feel */
+        }
+
+        /* Progress Bar */
+        .progress-bar {
+            width: 100%;
+            background-color: #e0e0e0;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            height: 15px;
+        }
+        .progress-fill {
+            height: 100%;
+            width: 10%;
+            background-color: #2ecc71;
+            border-radius: 10px;
+            transition: width 0.5s;
+        }
+
+        /* Scenario Image Area */
+        .scene-display {
+            height: 250px;
+            background-color: #e6f7ff;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            border: 2px dashed #3b82f6;
+            font-size: 20px;
+            color: #555;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        /* Animation class for shaking */
+        .shake {
+            animation: shake 0.5s;
+            animation-iteration-count: infinite; 
+        }
+
+        @keyframes shake {
+            0% { transform: translate(1px, 1px) rotate(0deg); }
+            10% { transform: translate(-1px, -2px) rotate(-1deg); }
+            20% { transform: translate(-3px, 0px) rotate(1deg); }
+            30% { transform: translate(3px, 2px) rotate(0deg); }
+            40% { transform: translate(1px, -1px) rotate(1deg); }
+            50% { transform: translate(-1px, 2px) rotate(-1deg); }
+            60% { transform: translate(-3px, 1px) rotate(0deg); }
+            70% { transform: translate(3px, 1px) rotate(-1deg); }
+            80% { transform: translate(-1px, -1px) rotate(1deg); }
+            90% { transform: translate(1px, 2px) rotate(0deg); }
+            100% { transform: translate(1px, -2px) rotate(-1deg); }
+        }
+
+        /* Options Buttons */
+        .options-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 15px;
+        }
+
+        .action-btn {
+            background-color: #3b82f6;
+            color: white;
+            border: none;
+            padding: 20px;
+            border-radius: 12px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .action-btn:hover { background-color: #2563eb; transform: scale(1.05); }
+
+        .feedback-msg {
+            margin-top: 20px;
+            font-weight: bold;
+            font-size: 18px;
+            height: 30px;
+        }
+
+        /* Hidden success screen */
+        .success-screen {
+            display: none;
+            text-align: center;
+        }
+        .success-screen h1 { color: #2ecc71;
+         }
+         footer {
+            background-color: #0073e6;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="navbar">
+        <h2>Mission Control: Level 1 🌍</h2>
+    </div>
+
+    <div class="game-container" id="gameBox">
+        
+        <h3>Current Status: <span id="statusText" style="color:red">EARTHQUAKE STARTED!</span></h3>
+        
+        <div class="progress-bar">
+            <div class="progress-fill" id="progressBar"></div>
+        </div>
+
+        <div class="scene-display shake" id="sceneImage">
+            [ Scenario: The Classroom is Shaking! ] <br>
+            What is your first move?
+        </div>
+
+        <div class="feedback-msg" id="feedback"></div>
+
+        <div class="options-grid" id="buttonArea">
+            <button class="action-btn" onclick="checkAnswer('run')">🏃 Run Outside</button>
+            <button class="action-btn" onclick="checkAnswer('drop')">👇 DROP to knees</button>
+            <button class="action-btn" onclick="checkAnswer('call')">📞 Call Mom</button>
+        </div>
+    </div>
+
+    <div class="game-container success-screen" id="successBox">
+        <h1>🎉 MISSION COMPLETED!</h1>
+        <p>You survived the earthquake by following the correct steps.</p>
+        <h2>+50 Points Earned</h2>
+        <button type="button" onclick="window.location.href='Level2.html'"action-btn"; style="background-color: #2ecc71;">Go to Level 2: Fire Escape ➡</button>
+    </div>
+
+    <script>
+      
+        let stage = 1; // 1 = Drop, 2 = Cover, 3 = Hold On
+
+        function checkAnswer(action) {
+            const feedback = document.getElementById("feedback");
+            const scene = document.getElementById("sceneImage");
+            const buttons = document.getElementById("buttonArea");
+            const progress = document.getElementById("progressBar");
+            const status = document.getElementById("statusText");
+
+            // STAGE 1: The Shake Starts
+            if (stage === 1) {
+                if (action === 'drop') {
+                    feedback.style.color = "green";
+                    feedback.innerText = "Correct! Get low so you don't fall.";
+                    progress.style.width = "40%";
+                    
+                    // Prepare Stage 2
+                    setTimeout(() => {
+                        stage = 2;
+                        scene.innerText = "[ You are on the floor. Debris is falling! ]";
+                        feedback.innerText = "What next?";
+                        status.innerText = "DEBRIS FALLING!";
+                        // Change Buttons for Stage 2
+                        buttons.innerHTML = `
+                            <button class="action-btn" onclick="checkAnswer('look')">👀 Look Up</button>
+                            <button class="action-btn" onclick="checkAnswer('cover')">🛡 COVER Head/Neck</button>
+                            <button class="action-btn" onclick="checkAnswer('scream')">😱 Scream</button>
+                        `;
+                    }, 1500);
+                } else {
+                    feedback.style.color = "red";
+                    feedback.innerText = "Wrong! Moving around is dangerous!";
+                }
+            } 
+            // STAGE 2: Falling Debris
+            else if (stage === 2) {
+                if (action === 'cover') {
+                    feedback.style.color = "green";
+                    feedback.innerText = "Good! Protect your vital organs.";
+                    progress.style.width = "70%";
+
+                    // Prepare Stage 3
+                    setTimeout(() => {
+                        stage = 3;
+                        scene.innerText = "[ You are under the table. The shaking is violent! ]";
+                        feedback.innerText = "One last step...";
+                        status.innerText = "SHAKING CONTINUES";
+                        // Change Buttons for Stage 3
+                        buttons.innerHTML = `
+                            <button class="action-btn" onclick="checkAnswer('hold')">✊ HOLD ON</button>
+                            <button class="action-btn" onclick="checkAnswer('run')">🏃 Run Now</button>
+                            <button class="action-btn" onclick="checkAnswer('close')">👀 Close Eyes</button>
+                        `;
+                    }, 1500);
+                } else {
+                    feedback.style.color = "red";
+                    feedback.innerText = "No! You need to protect your head!";
+                }
+            }
+            // STAGE 3: Hold On
+            else if (stage === 3) {
+                if (action === 'hold') {
+                    progress.style.width = "100%";
+                    scene.classList.remove("shake"); // Stop shaking animation
+                    
+                    setTimeout(() => {
+                        document.getElementById("gameBox").style.display = "none";
+                        document.getElementById("successBox").style.display = "block";
+                    }, 1000);
+                } else {
+                    feedback.style.color = "red";
+                    feedback.innerText = "The table might move! Hold on to it!";
+                }
+            }
+        }
+    </script>
+<footer>
+    &copy; 2025 Disaster Preparedness Education System. All Rights Reserved.
+</footer>
+
+</body>
+</html>
